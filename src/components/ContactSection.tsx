@@ -78,8 +78,8 @@ export const ContactSection: React.FC = () => {
                 <Mail className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                 <div>
                   <div className="font-semibold text-neutral-900 dark:text-white">Engineering Inquiries & RFPs</div>
-                  <a href="mailto:inquiries@vektordynamics.com" className="text-neutral-600 dark:text-neutral-300 hover:text-amber-500 font-mono">
-                    inquiries@vektordynamics.com
+                  <a href="mailto:inquiries@biocoredesign.com" className="text-neutral-600 dark:text-neutral-300 hover:text-amber-500 font-mono">
+                    inquiries@biocoredesign.com
                   </a>
                 </div>
               </div>

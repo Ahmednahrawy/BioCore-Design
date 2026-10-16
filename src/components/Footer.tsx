@@ -22,9 +22,9 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2 text-neutral-900 dark:text-white font-bold text-base tracking-tight">
               <div className="w-6 h-6 rounded-xs bg-neutral-900 dark:bg-neutral-100 flex items-center justify-center text-white dark:text-neutral-950 font-mono text-xs font-black">
-                VD
+                BD
               </div>
-              <span>VEKTOR DYNAMICS</span>
+              <span>BIOCORE-DESIGN</span>
             </div>
 
             <p className="text-xs text-neutral-600 dark:text-neutral-400 max-w-sm leading-relaxed">
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500 dark:text-neutral-500 font-mono">
           <div>
-            © {new Date().getFullYear()} Vektor Dynamics Engineering Group. All rights reserved.
+            © {new Date().getFullYear()} BioCore-Design Engineering Group. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">

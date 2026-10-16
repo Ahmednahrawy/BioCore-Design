@@ -111,7 +111,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
         {/* Footer */}
         <div className="flex items-center justify-between px-6 py-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950">
           <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            Published by Vektor Dynamics Engineering Editorial
+            Published by BioCore-Design Engineering Editorial
           </span>
           <button
             onClick={onClose}

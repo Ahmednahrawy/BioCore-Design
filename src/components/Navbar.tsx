@@ -25,9 +25,9 @@ export const Navbar: React.FC = () => {
           className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-neutral-900 dark:text-white whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
         >
           <div className="w-7 h-7 rounded-sm bg-neutral-900 dark:bg-neutral-100 flex items-center justify-center text-white dark:text-neutral-950 font-mono text-xs font-black tracking-tighter">
-            VD
+            BD
           </div>
-          <span className="font-extrabold tracking-tight">VEKTOR <span className="font-light text-neutral-500 dark:text-neutral-400">DYNAMICS</span></span>
+          <span className="font-extrabold tracking-tight">BIOCORE<span className="font-light text-neutral-500 dark:text-neutral-400">-DESIGN</span></span>
         </a>
 
         {/* Zone 2: 4-5 Navigation Links (single-line, clean hover) */}
