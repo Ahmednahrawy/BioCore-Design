@@ -1,6 +1,10 @@
 import { Project } from '../types';
+import heroImg from '../assets/images/hero_mechanical_engineering_1791788020719.jpg';
+import actuatorImg from '../assets/images/portfolio_aerospace_actuator_1791788040248.jpg';
+import surgicalImg from '../assets/images/portfolio_medical_surgical_1791788055768.jpg';
+import chassisImg from '../assets/images/portfolio_robotics_chassis_1791788074419.jpg';
 
-export const HERO_IMAGE_URL = '/src/assets/images/hero_mechanical_engineering_1791788020719.jpg';
+export const HERO_IMAGE_URL = heroImg;
 
 export const PROJECTS_DATA: Project[] = [
   {
@@ -21,7 +25,7 @@ export const PROJECTS_DATA: Project[] = [
       stressFactorOfSafety: '2.85x Yield under Max G-Load',
       thermalEnvelope: '-55°C to +125°C Operational'
     },
-    image: '/src/assets/images/portfolio_aerospace_actuator_1791788040248.jpg',
+    image: actuatorImg,
     cadSoftware: ['Siemens NX', 'ANSYS Mechanical', 'KISSsoft Gear Engine'],
     manufacturingProcess: '5-Axis Simultaneous CNC Milling + Wire EDM',
     standards: ['AS9100D', 'ASME Y14.5M-2018', 'MIL-STD-810H']
@@ -44,7 +48,7 @@ export const PROJECTS_DATA: Project[] = [
       stressFactorOfSafety: '3.2x Peak Clamping Strain',
       thermalEnvelope: 'Autoclave 134°C @ 2.1 bar steam resistant'
     },
-    image: '/src/assets/images/portfolio_medical_surgical_1791788055768.jpg',
+    image: surgicalImg,
     cadSoftware: ['PTC Creo', 'SolidWorks Medical Edition', 'Abaqus Non-linear FEA'],
     manufacturingProcess: 'Swiss Micro-Turning + Laser Micro-Welding',
     standards: ['ISO 13485:2016', 'ISO 10993 Biocompatibility', 'FDA 21 CFR 820']
@@ -67,7 +71,7 @@ export const PROJECTS_DATA: Project[] = [
       stressFactorOfSafety: '2.4x under 3G Bump + Cornering',
       thermalEnvelope: '-40°C to +110°C Fluid Temp'
     },
-    image: '/src/assets/images/portfolio_robotics_chassis_1791788074419.jpg',
+    image: chassisImg,
     cadSoftware: ['Autodesk Fusion Generative', 'Altair OptiStruct', 'Siemens NX CAM'],
     manufacturingProcess: 'Hermle 5-Axis CNC High-Speed Machining',
     standards: ['ISO 9001:2015', 'DIN 740 Drivetrain', 'VDA 6.3 Automotive']
@@ -90,7 +94,7 @@ export const PROJECTS_DATA: Project[] = [
       stressFactorOfSafety: '3.1x Static Tip Load',
       thermalEnvelope: '10°C to 45°C Precision Ambient'
     },
-    image: '/src/assets/images/hero_mechanical_engineering_1791788020719.jpg',
+    image: heroImg,
     cadSoftware: ['SolidWorks 2025', 'ANSYS Mechanical', 'Adams Multibody Dynamics'],
     manufacturingProcess: 'CNC Turning & 4-Axis Milling + Anodizing',
     standards: ['ISO 14644-1 Cleanroom', 'IEC 60529 IP67', 'ANSI/RIA R15.06']
