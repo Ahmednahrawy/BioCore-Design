@@ -5,6 +5,20 @@ export type ProjectCategory =
   | 'Medical Devices' 
   | 'Mobility & Automotive';
 
+export interface Testimonial {
+  id: string;
+  clientName: string;
+  role: string;
+  company: string;
+  industry: string;
+  quote: string;
+  projectScope: string;
+  verifiedMetric: string;
+  metricLabel: string;
+  standardOrCertification: string;
+  year: string;
+}
+
 export interface ProjectTechnicalSpecs {
   dimensions: string;
   primaryMaterial: string;

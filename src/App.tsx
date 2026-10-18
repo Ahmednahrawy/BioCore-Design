@@ -6,6 +6,7 @@ import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ProjectModal } from './components/ProjectModal';
+import { ClientTestimonials } from './components/ClientTestimonials';
 import { QuoteEstimator } from './components/QuoteEstimator';
 import { BlogSection } from './components/BlogSection';
 import { ContactSection } from './components/ContactSection';
@@ -54,6 +55,9 @@ const MainApp: React.FC = () => {
 
         {/* Portfolio Gallery */}
         <PortfolioSection onOpenProject={setSelectedProject} />
+
+        {/* Client Testimonials & Social Proof */}
+        <ClientTestimonials />
 
         {/* Interactive Custom Engineering Quote Estimator & Lead Capture */}
         <QuoteEstimator initialService={quoteInitialService} />
