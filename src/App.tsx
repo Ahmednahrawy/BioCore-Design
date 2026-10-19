@@ -12,11 +12,14 @@ import { BlogSection } from './components/BlogSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { AnalyticsDashboard } from './components/AnalyticsDashboard';
+import { ChatFlyButton } from './components/ChatFlyButton';
+import { ChatDrawer } from './components/ChatDrawer';
 import { Project } from './types';
 
 const MainApp: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [quoteInitialService, setQuoteInitialService] = useState<string | undefined>(undefined);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleSelectServiceForQuote = (serviceTitle: string) => {
     setQuoteInitialService(serviceTitle);
@@ -78,6 +81,16 @@ const MainApp: React.FC = () => {
 
       {/* Traffic Analytics & Lead Conversion CRM Modal */}
       <AnalyticsDashboard />
+
+      {/* Live AI Customer Support Chat Fly Button & Slide-over Drawer */}
+      <ChatFlyButton 
+        onClick={() => setIsChatOpen(true)} 
+        isOpen={isChatOpen} 
+      />
+      <ChatDrawer 
+        isOpen={isChatOpen} 
+        onClose={() => setIsChatOpen(false)} 
+      />
     </div>
   );
 };
