@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Cpu, Compass } from 'lucide-react';
 import { HERO_IMAGE_URL } from '../data/projects';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage();
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -19,19 +21,19 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             {/* Subtle editorial kicker (Clean unboxed text, no pill badges) */}
             <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-neutral-500 dark:text-neutral-400">
-              <span>Mechanical Engineering</span>
+              <span>{t.heroKicker1}</span>
               <span aria-hidden="true" className="text-amber-500">·</span>
-              <span>Finite Element Analysis</span>
+              <span>{t.heroKicker2}</span>
               <span aria-hidden="true" className="text-amber-500">·</span>
-              <span>DFM / DFA</span>
+              <span>{t.heroKicker3}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.12]" style={{ textWrap: 'balance' }}>
-              Precision mechanical design for flight-critical mechanisms and robotic hardware.
+              {t.heroTitle}
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed">
-              We engineer mission-critical hardware from initial kinematics to production-ready drawings. Partnering with aerospace primes, robotics innovators, and medical device leaders to eliminate manufacturing risks before cutting metal.
+              {t.heroSubtitle}
             </p>
 
             {/* CTAs */}
@@ -40,7 +42,7 @@ export const Hero: React.FC = () => {
                 onClick={() => scrollTo('quote-estimator')}
                 className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-neutral-900 dark:bg-amber-500 dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-amber-400 rounded-md transition-all shadow-sm cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               >
-                <span>Request Custom Quote</span>
+                <span>{t.heroCtaQuote}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -48,7 +50,7 @@ export const Hero: React.FC = () => {
                 onClick={() => scrollTo('portfolio')}
                 className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-md transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               >
-                <span>Explore Portfolio</span>
+                <span>{t.heroCtaPortfolio}</span>
               </button>
             </div>
 

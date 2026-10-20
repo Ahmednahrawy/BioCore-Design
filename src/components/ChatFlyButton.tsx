@@ -1,5 +1,6 @@
 import React from 'react';
-import { MessageSquare, Sparkles } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ChatFlyButtonProps {
   onClick: () => void;
@@ -7,6 +8,7 @@ interface ChatFlyButtonProps {
 }
 
 export const ChatFlyButton: React.FC<ChatFlyButtonProps> = ({ onClick, isOpen }) => {
+  const { t } = useLanguage();
   if (isOpen) return null;
 
   return (
@@ -23,7 +25,7 @@ export const ChatFlyButton: React.FC<ChatFlyButtonProps> = ({ onClick, isOpen })
 
         <div className="flex flex-col text-left pr-1">
           <span className="text-xs font-bold tracking-tight leading-tight">
-            Chat with Support
+            {t.chatSupport}
           </span>
           <span className="text-[10px] opacity-80 font-mono tracking-tight">
             AI Assistant · Online

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 import { AnalyticsProvider } from './context/AnalyticsContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -98,9 +99,11 @@ const MainApp: React.FC = () => {
 export default function App() {
   return (
     <ThemeProvider>
-      <AnalyticsProvider>
-        <MainApp />
-      </AnalyticsProvider>
+      <LanguageProvider>
+        <AnalyticsProvider>
+          <MainApp />
+        </AnalyticsProvider>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

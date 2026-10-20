@@ -1,68 +1,60 @@
-# BioCore-Design AI Chat Drawer & Inbound Consultation Fly Button
+# Multi-Language Localization (English, Arabic RTL, Turkish) & Top-Bar Globe Selector
 
-A floating action button (FAB) that opens an interactive, slide-over right drawer for prospective clients and engineering teams to converse with the BioCore-Design Customer Support & Solutions AI, powered by the Gemini API (`gemini-3.8-flash`).
+A comprehensive internationalization (i18n) system for BioCore-Design providing native support for English, Arabic (with full bidirectional RTL layout mirroring), and Turkish, controlled via a dedicated Globe icon dropdown menu in the top navigation bar.
 
 ---
 
 ## User Review & Critical Decisions
 
 > [!IMPORTANT]
-> The following architectural and UX choices have been confirmed based on your preferences:
+> The following architectural and localization specifications have been confirmed based on your choices:
 
-- **Confirmed Persona**: Customer support agent answering general company inquiries, engineering discipline capabilities, manufacturing standards, and project intake questions.
-- **Confirmed Quick Starters**: 3 prominent starter prompts pre-populated on the thread:
-  1. *"Estimate project cost"* (guides user on sizing, rates, and lead time)
-  2. *"Material selection advice"* (Titanium Ti-6Al-4V vs. 7075-T6 vs. CF-PEEK)
-  3. *"DFM guidelines"* (ASME Y14.5 GD&T tolerancing and 5-axis CNC machining yields)
-- **Confirmed UI Layout**: Slide-over drawer panel mounted on the right edge of the viewport with smooth backdrop overlay, full conversational thread, auto-scrolling message list, input box with loading indicators, and quick action chips.
+- **Confirmed Layout Behavior**: When Arabic (`ar`) is selected, the application dynamically toggles `dir="rtl"` on `document.documentElement`, activating bidirectional layout mirroring (navigation order, text alignment, margins/paddings, and form controls). For English (`en`) and Turkish (`tr`), `dir="ltr"` is maintained.
+- **Confirmed Translation Scope**: Complete end-to-end translation covering the Navigation bar, Hero section, Core Capabilities breakdown, Portfolio Case Studies & Dossiers, Client Testimonials & Benchmarks, Custom Engineering Quote Estimator, Technical Insights, Direct Contact & Labs, and Footer.
+- **Confirmed Selector UI**: A Globe icon button in the top navigation bar with an active language badge (`EN`, `AR`, `TR`) that opens an accessible dropdown menu showing native language names (`English`, `العربية`, `Türkçe`) and checkmarks.
 
 ---
 
 ## 1. Overview & Core Concept
 
-- **What It Does**: Provides a dedicated "Chat with BioCore" floating action button positioned in the bottom-right corner of the interface (visually distinct, styled with an engineering chat icon and presence indicator). Clicking it reveals an animated slide-over drawer from the right screen edge.
-- **Target Audience / Persona**: Prospective clients, engineering leads, and hardware innovators seeking fast answers regarding capabilities, facilities (Silicon Valley & Munich), pricing estimations, NDA confidentiality, and manufacturing tolerances.
-- **AI Core**: Utilizes `@google/genai` with `gemini-3.8-flash` configured with a comprehensive system prompt encapsulating BioCore-Design's full technical profile:
-  - AS9100D, ISO 13485:2016, and ITAR compliance standards
-  - 6 core disciplines (CAD, FEA, DFM, Prototyping, Medical Device, Mechatronics)
-  - Typical quotation metrics ($165/hr senior rate, turnaround times)
-  - Direct routing to formal quote estimator and human lead engineers
+- **What It Does**: Enables international clients and global engineering partners across North America, Europe, Turkey, and the Middle East to experience the entire BioCore-Design platform in their preferred language.
+- **Languages Supported**:
+  1. **English (`en`)**: LTR, international engineering standard.
+  2. **Arabic (`ar`)**: RTL, full bidirectional mirroring with Arabic engineering terminology.
+  3. **Turkish (`tr`)**: LTR, specialized Turkish mechanical design & manufacturing terms.
+- **Persistence**: User language preference is stored in `localStorage` (`biocore_language_preference`) and remembered across browser sessions.
 
 ---
 
 ## 2. User Experience & Visual Design
 
-### Key User Flows
-1. **Zero State (Fly Button)**:
-   - A floating pill-styled action button sits anchored at `bottom-6 right-6 z-40`.
-   - Features a message icon, "Chat with Support", and an active status dot.
-2. **Drawer Open Transition**:
-   - Clicking the button slides out a `400px` (desktop) or `100vw` (mobile) side drawer with backdrop blur.
-   - Header shows company branding, active agent status, model indicator, and close button (`X` and `Esc` key support).
-3. **Conversational Interaction**:
-   - Welcome card introduces the BioCore Assistant with verified quick-starter query buttons.
-   - Multi-turn conversation: User messages appear aligned right in neutral slate; Assistant responses appear left in high-contrast card styling with formatted bullet points, bold headers, and copy code blocks.
-   - Real-time streaming or pending typing indicator with pulsing ellipsis.
-4. **Action Routing**:
-   - When users express interest in getting an official quote or speaking with human engineers, the assistant offers direct in-chat jump links to `#quote-estimator` or `#contact`.
+### Top Bar Language Selector
+- **Default State**: Positioned in the top navigation bar adjacent to the Dark Mode and Analytics triggers.
+- **Visuals**: A Globe icon paired with a subtle language indicator (`EN`, `AR`, or `TR`).
+- **Dropdown Menu**:
+  - Unrolls on click with backdrop blur and border styling matching the industrial dark/light aesthetic.
+  - Lists each language with its native typography:
+    - English (`English` · EN)
+    - العربية (`العربية` · AR — with Arabic script font rendering)
+    - Türkçe (`Türkçe` · TR)
+  - Active language marked with a checkmark and amber highlight.
+  - Keyboard accessible: `Escape` dismisses the menu, and clicking outside automatically closes it.
 
-### Visual Theme & Styling
-- **Colors**: Conforms to the existing precision industrial dark/light theme (neutral-900 / white surfaces, neutral-800 borders, amber-500 accent touches).
-- **Typography**: Plus Jakarta Sans for message prose; JetBrains Mono for technical specifications and numerical metrics.
-- **Zero-Pill Restraint**: Metadata lines inside messages (e.g. timestamps, source references) use clean unboxed text with `·` separators.
+### RTL (Right-to-Left) Transformation for Arabic
+- Automatically applies `dir="rtl"` to `<html>`.
+- Grid alignments, flex orders, and icons mirror naturally (e.g. arrow directional cues flip appropriately).
+- Numeric values and units (e.g. `±0.002 mm`, `AS9100D`, `$165/hr`) maintain proper bidirectional isolation via `font-mono` and `dir="ltr"` inline wrapping where appropriate so technical numbers never reverse.
 
 ---
 
 ## 3. Key Product Decisions & Trade-Offs
 
-- **Model Selection (`gemini-3.8-flash`)**:
-  - *Chosen*: `gemini-3.8-flash` via `@google/genai`.
-  - *Rationale*: Provides sub-second response times, cost efficiency, and strong technical adherence for real-time customer support dialogue.
-- **Slide-Over Drawer vs. Modal**:
-  - *Chosen*: Right-hand slide-over drawer (380–420px width).
-  - *Rationale*: Allows users to keep browsing portfolio case studies and services on the left while conversing with support on the right.
-- **Graceful Offline / Fallback Handling**:
-  - *Chosen*: Integrated fallback engine that answers common technical questions even if an API key is temporarily unavailable or in local preview, ensuring 100% uptime with zero UI dead ends.
+- **Dedicated Lightweight Translation Engine vs. Heavy External Library**:
+  - *Chosen*: Custom TypeScript-typed dictionary system (`src/i18n/translations.ts` and `src/context/LanguageContext.tsx`).
+  - *Why*: Zero bundle bloat, 100% type safety, zero asynchronous translation flicker, and instantaneous language switching without reloading the page.
+- **Bidirectional Dynamic RTL vs. Separate Stylesheets**:
+  - *Chosen*: Native HTML `dir="rtl"` attribute with Tailwind CSS logical properties (e.g., `start`, `end`, flex reversing).
+  - *Why*: Smooth immediate transition with zero layout reflow delays or extra CSS downloads.
 
 ---
 
@@ -73,33 +65,28 @@ A floating action button (FAB) that opens an interactive, slide-over right drawe
 │                      Client App                        │
 │                                                        │
 │  ┌────────────────────────┐    ┌────────────────────┐  │
-│  │   Floating Fly Button  │───▶│ Slide-Over Drawer  │  │
-│  │   (Bottom-Right Fixed) │    │ (State: isOpen)    │  │
+│  │     Navbar Top Bar     │───▶│  LanguageSelector  │  │
+│  │     (Globe Icon)       │    │  (Dropdown Menu)   │  │
 │  └────────────────────────┘    └─────────┬──────────┘  │
 │                                          │             │
 │                        ┌─────────────────▼──────────┐  │
-│                        │    ChatConversationContext  │  │
-│                        │    - messages: Message[]   │  │
-│                        │    - isGenerating: boolean │  │
-│                        │    - activeStarters        │  │
+│                        │      LanguageContext       │  │
+│                        │      - language: en|ar|tr  │  │
+│                        │      - setLanguage(lang)   │  │
+│                        │      - t(key, fallback)    │  │
+│                        │      - dir: 'ltr' | 'rtl'  │  │
 │                        └─────────┬──────────────────┘  │
-└──────────────────────────────────┼─────────────────────┘
-                                   │
-                                   ▼
-                   ┌───────────────────────────────┐
-                   │    @google/genai SDK Client   │
-                   │    Model: gemini-3.8-flash    │
-                   │    System Instructions:        │
-                   │    BioCore Technical Profile  │
-                   └───────────────────────────────┘
+│                                  │                     │
+│                        ┌─────────▼──────────────────┐  │
+│                        │   i18n Translation Store   │  │
+│                        │   (EN, AR, TR Dictionaries)│  │
+│                        └────────────────────────────┘  │
+└────────────────────────────────────────────────────────┘
 ```
 
-### Component Hierarchy
-- `src/components/ChatFlyButton.tsx`: Floating trigger button anchored at bottom-right.
-- `src/components/ChatDrawer.tsx`: Slide-over panel containing header, scrollable thread, quick-starter chips, and message input.
-- `src/services/geminiChat.ts`: Wrapper around `@google/genai` handling multi-turn conversation history, system instructions, and error fallbacks.
-
-### Interactive State Transitions
-- `openChat() / closeChat()`: Toggles drawer visibility with `Escape` keyboard dismissal and outer backdrop click dismiss.
-- `sendMessage(text)`: Appends user message, triggers pending state, streams or fetches Gemini response, and appends assistant message to thread with timestamp.
-- `selectStarterPrompt(prompt)`: Automatically dispatches one of the three approved starter queries.
+### Component & File Mapping
+- `src/types/i18n.ts`: Typed translation keys and supported language definitions.
+- `src/i18n/translations.ts`: Complete translation dictionary for English, Arabic, and Turkish across all modules.
+- `src/context/LanguageContext.tsx`: React context managing current language, RTL DOM attribute toggling, and translation lookup helper `t()`.
+- `src/components/LanguageSelector.tsx`: Dropdown selector component mounted in `Navbar.tsx`.
+- Component updates: `Navbar`, `Hero`, `ServicesSection`, `PortfolioSection`, `QuoteEstimator`, `BlogSection`, `ContactSection`, and `Footer` wired to use `useLanguage()`.
