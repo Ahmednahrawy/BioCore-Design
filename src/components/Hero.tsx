@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ShieldCheck, Cpu, Compass } from 'lucide-react';
-import { HERO_IMAGE_URL } from '../data/projects';
 import { useLanguage } from '../context/LanguageContext';
+import { InteractiveCadViewer } from './InteractiveCadViewer';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
+  const [assembliesCount, setAssembliesCount] = useState(0);
+  const [massReduction, setMassReduction] = useState(0);
+  const [yieldPass, setYieldPass] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const duration = 1800;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      
+      setAssembliesCount(ease * 420);
+      setMassReduction(ease * 38.4);
+      setYieldPass(ease * 100);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    const frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -71,41 +96,25 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: High-Fidelity Engineering Visual Carrier */}
+          {/* Column 2: Dynamic Interactive CAD / FEA Inspection Viewer */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 shadow-xl group">
-              <img
-                src={HERO_IMAGE_URL}
-                alt="Precision multi-axis titanium robotic mechanism inspected on granite surface plate"
-                className="w-full h-80 sm:h-96 lg:h-[420px] object-cover transition-transform duration-500 group-hover:scale-102"
-                referrerPolicy="no-referrer"
-              />
-              {/* Engineering overlay watermark badge */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/50 to-transparent p-4 sm:p-5 text-white">
-                <div className="flex items-center justify-between text-xs text-neutral-300">
-                  <span className="font-mono text-amber-400 font-medium">TI-MAM-7439 / AS9100D</span>
-                  <span className="font-mono">TOL: ±0.005 mm</span>
-                </div>
-                <p className="text-xs sm:text-sm font-medium text-neutral-100 mt-1">
-                  5-Axis CNC Machined Titanium Cycloidal Actuator Assembly
-                </p>
-              </div>
-            </div>
+            <InteractiveCadViewer />
           </div>
         </div>
 
-        {/* Adjacency Proof Row: Tabular Numerical Metrics Strip */}
+        {/* Adjacency Proof Row: Tabular Numerical Metrics Strip with Live Telemetry */}
         <div className="mt-14 pt-8 border-t border-neutral-200 dark:border-neutral-800 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white">
-              420+
+          <div className="group">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white flex items-baseline gap-1">
+              <span>{Math.round(assembliesCount)}</span>
+              <span className="text-amber-500">+</span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">
               Production Assemblies Delivered
             </p>
           </div>
 
-          <div>
+          <div className="group">
             <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white">
               ±0.002 mm
             </div>
@@ -114,18 +123,18 @@ export const Hero: React.FC = () => {
             </p>
           </div>
 
-          <div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white">
-              -38.4%
+          <div className="group">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white flex items-baseline gap-1">
+              <span>-{massReduction.toFixed(1)}%</span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">
               Average Mass Reduction via Topology FEA
             </p>
           </div>
 
-          <div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white">
-              100%
+          <div className="group">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-neutral-900 dark:text-white flex items-baseline gap-1">
+              <span>{Math.round(yieldPass)}%</span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">
               First-Pass DFM Tooling Yield

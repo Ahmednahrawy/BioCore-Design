@@ -28,12 +28,12 @@ export const ClientTestimonials: React.FC = () => {
     setCurrentIndex((prev) => (prev - 1 + total) % total);
   };
 
-  // Auto-advance in carousel mode
+  // Auto-advance in carousel mode every 2 seconds unless paused by mouse hover
   useEffect(() => {
     if (layoutMode === 'carousel' && !isPaused) {
       timerRef.current = setInterval(() => {
         nextSlide();
-      }, 7000);
+      }, 2000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -96,6 +96,8 @@ export const ClientTestimonials: React.FC = () => {
             className="relative"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
             <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-7 sm:p-10 lg:p-12 shadow-sm transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -182,6 +184,15 @@ export const ClientTestimonials: React.FC = () => {
                 ))}
                 <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 ml-2">
                   0{currentIndex + 1} / 0{total}
+                </span>
+
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full flex items-center gap-1.5 transition-colors ${
+                  isPaused 
+                    ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30' 
+                    : 'text-neutral-400 dark:text-neutral-500'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${isPaused ? 'bg-amber-500' : 'bg-emerald-500 animate-pulse'}`} />
+                  <span>{isPaused ? 'Paused on Hover' : '2s'}</span>
                 </span>
               </div>
 

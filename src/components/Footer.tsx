@@ -69,6 +69,11 @@ export const Footer: React.FC = () => {
                   Medical Device Packaging (ISO 13485)
                 </button>
               </li>
+              <li>
+                <button onClick={() => scrollTo('materials')} className="hover:text-neutral-900 dark:hover:text-white cursor-pointer text-amber-600 dark:text-amber-400 font-medium">
+                  Alloy & FoS Matrix Workbench
+                </button>
+              </li>
             </ul>
           </div>
 

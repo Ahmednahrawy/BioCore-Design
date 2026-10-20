@@ -5,6 +5,7 @@ import { AnalyticsProvider } from './context/AnalyticsContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
+import { MaterialComparator } from './components/MaterialComparator';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ProjectModal } from './components/ProjectModal';
 import { ClientTestimonials } from './components/ClientTestimonials';
@@ -54,6 +55,9 @@ const MainApp: React.FC = () => {
 
         {/* Services & Core Capabilities Breakdown */}
         <ServicesSection onSelectServiceForQuote={handleSelectServiceForQuote} />
+
+        {/* Dynamic Material Science & Structural FoS Workbench */}
+        <MaterialComparator />
 
         {/* Portfolio Gallery */}
         <PortfolioSection onOpenProject={setSelectedProject} />
