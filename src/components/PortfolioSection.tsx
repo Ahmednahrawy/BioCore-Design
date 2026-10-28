@@ -11,9 +11,10 @@ interface PortfolioSectionProps {
 const CATEGORIES: ProjectCategory[] = [
   'All',
   'Aerospace',
-  'Robotics & Automation',
   'Medical Devices',
-  'Mobility & Automotive',
+  'Robotics & Automation',
+  'Energy Systems',
+  'Consumer Tech',
 ];
 
 export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenProject }) => {
@@ -36,15 +37,15 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenProjec
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-neutral-500 dark:text-neutral-400 mb-2">
-              <span>Engineering Portfolio</span>
+              <span>Featured Case Studies</span>
               <span aria-hidden="true" className="text-amber-500">·</span>
-              <span>Case Studies</span>
+              <span>Verified Hardware Engineering</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 dark:text-white tracking-tight" style={{ textWrap: 'balance' }}>
-              High-consequence hardware assemblies.
+              Precision aerospace, medical robotics, and mission-critical mechanisms.
             </h2>
             <p className="mt-2 text-sm sm:text-base text-neutral-600 dark:text-neutral-300 max-w-2xl">
-              Each case study represents real flight qualifications, surgical trial approvals, and production line ramp-ups delivered to engineering clients.
+              Explore hardware programs delivered across commercial aerospace, Class II/III medical devices, and cleanroom automation—complete with FEA stress plots, GD&T drawings, and CMM metrology reports.
             </p>
           </div>
 

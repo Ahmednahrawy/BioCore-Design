@@ -53,14 +53,14 @@ const MainApp: React.FC = () => {
         {/* Hero Section */}
         <Hero />
 
+        {/* Portfolio Gallery */}
+        <PortfolioSection onOpenProject={setSelectedProject} />
+
         {/* Services & Core Capabilities Breakdown */}
         <ServicesSection onSelectServiceForQuote={handleSelectServiceForQuote} />
 
         {/* Dynamic Material Science & Structural FoS Workbench */}
         <MaterialComparator />
-
-        {/* Portfolio Gallery */}
-        <PortfolioSection onOpenProject={setSelectedProject} />
 
         {/* Client Testimonials & Social Proof */}
         <ClientTestimonials />

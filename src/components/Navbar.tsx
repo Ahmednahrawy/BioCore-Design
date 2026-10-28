@@ -40,19 +40,13 @@ export const Navbar: React.FC = () => {
           className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-neutral-900 dark:text-white whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
         >
           <div className="w-7 h-7 rounded-sm bg-neutral-900 dark:bg-neutral-100 flex items-center justify-center text-white dark:text-neutral-950 font-mono text-xs font-black tracking-tighter">
-            BD
+            BK
           </div>
-          <span className="font-extrabold tracking-tight">BIOCORE<span className="font-light text-neutral-500 dark:text-neutral-400">-DESIGN</span></span>
+          <span className="font-extrabold tracking-tight">BIO<span className="font-light text-neutral-500 dark:text-neutral-400">CORE</span></span>
         </a>
 
-        {/* Zone 2: 4-5 Navigation Links (single-line, clean hover) */}
+        {/* Zone 2: Navigation Links */}
         <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-neutral-600 dark:text-neutral-300">
-          <button 
-            onClick={() => scrollTo('capabilities')} 
-            className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-          >
-            {t.navCapabilities}
-          </button>
           <button 
             onClick={() => scrollTo('portfolio')} 
             className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
@@ -60,22 +54,16 @@ export const Navbar: React.FC = () => {
             {t.navPortfolio}
           </button>
           <button 
+            onClick={() => scrollTo('capabilities')} 
+            className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+          >
+            {t.navCapabilities}
+          </button>
+          <button 
             onClick={() => scrollTo('quote-estimator')} 
             className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           >
             {t.navQuote}
-          </button>
-          <button 
-            onClick={() => scrollTo('testimonials')} 
-            className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-          >
-            {t.navTestimonials}
-          </button>
-          <button 
-            onClick={() => scrollTo('insights')} 
-            className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-          >
-            {t.navInsights}
           </button>
           <button 
             onClick={() => scrollTo('contact')} 
@@ -211,12 +199,6 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex flex-col space-y-3 text-sm font-medium">
-            <button
-              onClick={() => scrollTo('capabilities')}
-              className="text-left py-2 text-neutral-700 dark:text-neutral-200 hover:text-neutral-950 dark:hover:text-white"
-            >
-              {t.navCapabilities}
-            </button>
             <button
               onClick={() => scrollTo('portfolio')}
               className="text-left py-2 text-neutral-700 dark:text-neutral-200 hover:text-neutral-950 dark:hover:text-white"

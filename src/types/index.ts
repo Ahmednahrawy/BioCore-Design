@@ -1,9 +1,10 @@
 export type ProjectCategory = 
   | 'All' 
   | 'Aerospace' 
-  | 'Robotics & Automation' 
   | 'Medical Devices' 
-  | 'Mobility & Automotive';
+  | 'Robotics & Automation' 
+  | 'Energy Systems' 
+  | 'Consumer Tech';
 
 export interface Testimonial {
   id: string;
